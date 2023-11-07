@@ -4,20 +4,16 @@ const app = express();
 const host = '127.0.0.1';
 const port = 8000;
 
-app.get('/home', (req, res) => {
-  res.status(200).type('text/plain');
-  res.send('Home page');
-});
+app.set('views', './views');
+app.set('view engine', 'pug');
 
-app.get('/about', (req, res) => {
-  res.status(200).type('text/plain');
-  res.send('About page');
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Greetings from Pug',
+    content: 'Node js Pug description',
+    type: 'h3'
+  });
 });
-
-app.get('/', (req,res) => {
-  res.status(200).type('text/plain')
-  res.send('example')
-})
 
 app.post('/api/admin', (req, res) => {
   res.status(200).type('text/plain');
@@ -30,8 +26,8 @@ app.post('/api/user', (req, res) => {
 });
 
 app.use(
-    '/uploads',
-    express.static(`${__dirname}/assets/images`)
+  '/uploads',
+  express.static(`${__dirname}/assets/images`)
 );
 
 app.use((req, res, next) => {

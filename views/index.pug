@@ -1,0 +1,19 @@
+html(lang="en")
+    head
+        title Node js Pug
+        meta(charset="utf-8")
+    body
+        case type
+            when 'h1'
+                h1 #{title}
+            when 'h2'
+                h2 #{title}
+            when 'h3'
+                h3 #{title}
+
+        if content
+            p #{content}
+        else
+            p No content
+
+        include includes/_list.pug
