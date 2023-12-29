@@ -8,11 +8,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Greetings from Pug',
-    content: 'Node js Pug description',
-    type: 'h3'
-  });
+  res.render('home');
 });
 
 app.post('/api/admin', (req, res) => {
